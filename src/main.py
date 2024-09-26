@@ -12,22 +12,22 @@ account = tclient.get_account()
 
 print(account)
 
-# wss_client = StockDataStream(env["ALPACA_KEY"], env["ALPACA_SECRET"])
+stock_stream = StockDataStream(env["ALPACA_KEY"], env["ALPACA_SECRET"])
 
-# async def data_handler(data):
-#     print(data)
+async def stock_data_stream_handler(data):
+    print(data)
     
-# wss_client.subscribe_quotes(data_handler, "")
+stock_stream.subscribe_quotes(stock_data_stream_handler, "AAPL")
 
-# wss_client.run()
+stock_stream.run()
 
-req = MarketOrderRequest(
-    symbol="AAPL", 
-    qty=1, 
-    side=OrderSide.BUY, 
-    type=OrderType.MARKET, 
-    time_in_force=TimeInForce.DAY)
+# req = MarketOrderRequest(
+#     symbol="AAPL", 
+#     qty=1, 
+#     side=OrderSide.BUY, 
+#     type=OrderType.MARKET, 
+#     time_in_force=TimeInForce.DAY)
 
-res = tclient.submit_order(req)
+# res = tclient.submit_order(req)
 
-print(req)
+# print(req)
